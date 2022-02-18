@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/prody/ProDy/archive/v{{ version }}.tar.gz
-  sha256: 1253f21717cdca7637784080e7982c04f3a6402b6b6a2f49d56cfcaa1be7ed16
+  sha256: ed23deb8f4a54b856829e3621b574ec38522a1f141dbb7b2ba446d1fd739fbb8
 
 build:
   number: 0
