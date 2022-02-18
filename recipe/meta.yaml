@@ -10,7 +10,7 @@ source:
   sha256: ed23deb8f4a54b856829e3621b574ec38522a1f141dbb7b2ba446d1fd739fbb8
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - prody = prody.apps:prody_main
