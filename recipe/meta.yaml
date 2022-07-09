@@ -35,7 +35,10 @@ requirements:
     - {{ pin_compatible('numpy') }}
 
 test:
+  requires:
+    - pip
   commands:
+    - pip check
     - prody --help
     - evol --help
   imports:
