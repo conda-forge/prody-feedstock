@@ -1,11 +1,11 @@
-About prody
-===========
+About prody-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/prody-feedstock/blob/main/LICENSE.txt)
 
 Home: http://prody.csb.pitt.edu/
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/prody-feedstock/blob/main/LICENSE.txt)
 
 Summary: ProDy is a free and open-source Python package for protein structure, dynamics, and sequence analysis, developed by the Bahar lab.
 
