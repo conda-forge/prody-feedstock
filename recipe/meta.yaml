@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/jamesmkrieger/ProDy/archive/v{{ version }}.tar.gz
-  sha256: 97b1b8b8100e77655db553e4dbc28ff7db23336e538ddf39d3bad8434aed1e32
+  sha256: ab25f54230f2731d05aa966879361ce803b43877895e49609924c9b24f38284c
 
 build:
   noarch: python
