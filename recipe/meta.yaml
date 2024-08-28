@@ -10,7 +10,8 @@ source:
   sha256: 97b1b8b8100e77655db553e4dbc28ff7db23336e538ddf39d3bad8434aed1e32
 
 build:
-  number: 0
+  noarch: python
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - prody = prody.apps:prody_main
@@ -20,15 +21,17 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
   host:
-    - python
+    - python >3.7,<3.12
     - pip <21.1
-    - numpy >=1.10
+    - setuptools
+    - numpy >=1.10,<1.25
   run:
-    - python
+    - python >3.7,<3.12
     - biopython
     - matplotlib-base
-    - pyparsing
+    - pyparsing <=3.1.1
     - requests
     - setuptools  # requires pkg_resources at runtime
     - scipy
