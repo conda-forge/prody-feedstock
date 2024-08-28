@@ -1,12 +1,12 @@
 {% set name = "ProDy" %}
-{% set version = "2.5rc1" %}
+{% set version = "2.5rc0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/jamesmkrieger/ProDy/archive/v{{ version }}.tar.gz
+  url: https://github.com/prody/ProDy/archive/v{{ version }}.tar.gz
   sha256: ab25f54230f2731d05aa966879361ce803b43877895e49609924c9b24f38284c
 
 build:
