@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   number: 1
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install -Ue . -vv && {{ PYTHON }} setup.py build_ext --inplace --force
   entry_points:
     - prody = prody.apps:prody_main
     - evol = prody.apps:evol_main
