@@ -38,6 +38,14 @@ requirements:
     - {{ pin_compatible('numpy') }}
 
 test:
+  requires:
+    - python >3.7,<3.12
+    - biopython
+    - pyparsing <=3.1.1
+    - requests
+    - setuptools  # requires pkg_resources at runtime
+    - scipy
+    - {{ pin_compatible('numpy') }}    
   commands:
     - prody --help
     - evol --help
