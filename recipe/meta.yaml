@@ -1,60 +1,216 @@
+# {% set name = "prody" %}
+# {% set version = "2.5.0" %}
+# {% set python_min = "3.10" %}
+
+# package:
+#   name: {{ name|lower }}
+#   version: {{ version }}
+
+# # source:
+# #   git_url: https://github.com/jamesmkrieger/{{ name }}.git
+# #   git_rev: 7d21dc4
+# source:
+#   git_url: https://github.com/jamesmkrieger/{{ name }}.git
+#   git_rev: 7d21dc4
+#   include:
+#     - prody/**
+#     - setup.py
+#     - pyproject.toml
+#     - README.*
+#     - LICENSE.rst
+
+
+# build:
+#   # noarch: python
+#   number: 4
+#   entry_points:
+#     - prody = prody.apps:prody_main
+#     - evol = prody.apps:evol_main
+#     # - script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+
+# requirements:
+#   build:
+#     # If your project compiles code (such as a C extension) then add the required compilers as separate entries here.
+#     # Compilers are named 'c', 'cxx', 'fortran', among others
+#     - python >=3.10,<3.13
+#     - biopython
+#     - requests
+#     - setuptools  # requires pkg_resources at runtime
+#     - scipy
+#     - pyparsing <=3.1.1
+#     - conda-build
+#     - pip
+#     # - {{ compiler('fortran') }}
+#     - numpy >=1.10,<1.25
+#     - {{ compiler('c') }}
+#     - {{ compiler('cxx') }}
+#     - {{ compiler('fortran') }}
+#     - libgfortran
+#     # - gfortran
+#     # - gcc
+#     # - gxx
+#     # - {{ compiler('c') | string }}
+#     # - {{ compiler('cxx') | string }}
+#     # - {{ "libc"}}
+#     # - {{ compiler('fortran') | string }}
+
+#   host:
+#     - python >=3.10
+#     - pip <21.1
+#     - setuptools
+#     - numpy >=1.10,<1.25
+#     - scipy
+#     - pyparsing <=3.1.1
+#     - biopython
+#     - requests
+#     - libgfortran
+#   run:
+#     - python >=3.10,<3.13
+#     # - {{ compiler('c') }}
+#     # - {{ compiler('cxx') }}
+#     # - {{ stdlib("c") }}
+#     # - gfortran
+#     # - gcc
+#     # - gxx
+#     - numpy >=1.10,<1.25
+#     - scipy
+#     - pyparsing <=3.1.1
+#     - biopython
+#     - pip
+#     - setuptools
+#     - requests
+
+# test:
+#   requires:
+#     - python >=3.10
+#     - numpy >=1.10,<1.25
+#     - scipy
+#     - pyparsing <=3.1.1
+#     - biopython
+#     # - gfortran
+#     - pip
+#     - setuptools
+#     - requests
+#     - pytest
+#     - pytest-xprocess
+#   commands:
+#     - prody --help
+#     - evol --help
+#   imports:
+#     - prody
+#     - prody.atomic
+#     - prody.database
+#     - prody.dynamics
+#     - prody.ensemble
+#     # - prody.kdtree
+#     - prody.kdtree.kdtree
+#     - prody.measure
+#     - prody.proteins
+#     - prody.sequence
+#     - prody.trajectory
+
+# about:
+#   home: http://www.bahargroup.org/prody/
+#   license: MIT
+#   license_family: MIT
+#   license_file: LICENSE.rst
+#   summary: ProDy is a free and open-source Python package for protein structure, dynamics, and sequence analysis, developed by the Bahar lab.
+#   description: |
+#     ProDy is a free and open-source Python package for protein 
+#     structure, dynamics, and sequence analysis, developed by the
+#     Bahar lab. It allows for comparative analysis and modeling of 
+#     protein structural  dynamics and sequence co-evolution. Fast 
+#     and flexible ProDy API is for interactive usage as well as 
+#     application development. ProDy also comes with several analysis 
+#     applications and a graphical user interface for visual analysis.
+#   doc_url: http://www.bahargroup.org/prody/manual/
+#   dev_url: https://github.com/prody/ProDy
+
+# extra:
+#   recipe-maintainers:
+#     - AnthonyBogetti
+#     - jamesmkrieger
+#     - simonbray
 {% set name = "prody" %}
 {% set version = "2.5.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
+# source:
+#   git_url: https://github.com/jamesmkrieger/{{ name }}.git
+#   git_rev: 7d21dc4
 source:
-  git_url: https://github.com/jamesmkrieger/{{ name }}.git
-  git_rev: 7d21dc4
+  # git_url: https://github.com/jamesmkrieger/{{ name }}.git
+  # git_rev: 7d21dc4
+  path: /home/vbadwaj/Desktop/ProDy-2.5.0rc0
+  # include:
+  #   - prody/**
+  #   - setup.py
+  #   - pyproject.toml
+  #   - README.*
+  #   - LICENSE.rst
+
 
 build:
-  noarch: python
+  # noarch: python
   number: 4
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   entry_points:
     - prody = prody.apps:prody_main
     - evol = prody.apps:evol_main
+    # - script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+    
 
 requirements:
   build:
     # If your project compiles code (such as a C extension) then add the required compilers as separate entries here.
     # Compilers are named 'c', 'cxx', 'fortran', among others
-    - python >={{ python_min }},<3.13
+    - python >=3.10,<3.13
     - biopython
     - requests
     - setuptools  # requires pkg_resources at runtime
     - scipy
-    - pyparsing <=3.1.1
+    - pyparsing >=3.1.2
     - conda-build
     - pip
-    - numpy >=1.10,<1.25
-    - gfortran
-    - gcc
-    - gxx
+    # - {{ compiler('fortran') }}
+    - numpy >=1.10,<2.0
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ stdlib("c") }}
+    - {{ compiler('fortran') }}
+    - libgfortran5
+    # - gfortran
+    # - gcc
+    # - gxx
+    # - {{ compiler('c') | string }}
+    # - {{ compiler('cxx') | string }}
+    # - {{ "libc"}}
+    # - {{ compiler('fortran') | string }}
+
   host:
-    - python {{ python_min }}
-    - pip <21.1
+    - python >=3.10
+    - pip >=22
     - setuptools
-    - numpy >=1.10,<1.25
+    - numpy >=1.10,<2.0
     - scipy
-    - pyparsing <=3.1.1
+    - pyparsing >=3.1.2
     - biopython
     - requests
+    - libgfortran5
   run:
-    - python >={{ python_min }},<3.13
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ stdlib("c") }}
-    - gfortran
-    - gcc
-    - gxx
-    - numpy >=1.10,<1.25
+    - python >=3.10,<3.13
+    # - {{ compiler('c') }}
+    # - {{ compiler('cxx') }}
+    # - {{ stdlib("c") }}
+    # - gfortran
+    # - gcc
+    # - gxx
+    - numpy >=1.10,<2.0
     - scipy
-    - pyparsing <=3.1.1
+    - pyparsing >=3.1.2
     - biopython
     - pip
     - setuptools
@@ -62,12 +218,12 @@ requirements:
 
 test:
   requires:
-    - python {{ python_min }}
-    - numpy >=1.10,<1.25
+    - python >=3.10
+    - numpy >=1.10,<2.0
     - scipy
-    - pyparsing <=3.1.1
+    - pyparsing >=3.1.2
     - biopython
-    - gfortran
+    # - gfortran
     - pip
     - setuptools
     - requests
@@ -82,7 +238,8 @@ test:
     - prody.database
     - prody.dynamics
     - prody.ensemble
-    - prody.kdtree
+    # - prody.kdtree
+    - prody.kdtree.kdtree
     - prody.measure
     - prody.proteins
     - prody.sequence
