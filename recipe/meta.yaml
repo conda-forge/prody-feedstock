@@ -12,7 +12,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - prody = prody.apps:prody_main
     - evol = prody.apps:evol_main
